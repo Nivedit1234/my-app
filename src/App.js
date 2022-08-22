@@ -2,11 +2,11 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
-//import { About } from './components/About';
+import { About } from './components/About';
 import { useState } from 'react';
 import Alert from './components/Alert';
 import React from 'react';
-//import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   const [mode, setmode] = useState('light'); //Whether dark mode is enabled or not
   const [alert, setalert] = useState(null);
@@ -28,30 +28,32 @@ function App() {
   };
   return (
     <>
-      {/* <Router> */}
-      <Navbar
-        title='TextUtils'
-        abouttext='About'
-        mode={mode}
-        toggleMode={toggleMode}
-      />
-      <Alert alert={alert} />
+      <Router>
+        <Navbar
+          title='TextUtils'
+          abouttext='About'
+          mode={mode}
+          toggleMode={toggleMode}
+        />
+        <Alert alert={alert} />
 
-      <div className='container my-3'>
-        {/* <Routes> */}
-        {/* <Route exact path='/about' element={<About />}></Route> */}
-        {
-          /* <Route
+        <div className='container my-3'>
+          <Routes>
+            <Route exact path='/about' element={<About />}></Route>
+
+            <Route
               exact
               path='/'
-              element={ */
-          <Textform heading='Enter the text to analyze below' mode={mode} />
-          /* }
-            ></Route> */
-        }
-        {/* </Routes> */}
-      </div>
-      {/* </Router> */}
+              element={
+                <Textform
+                  heading='Enter the text to analyze below'
+                  mode={mode}
+                />
+              }
+            ></Route>
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }

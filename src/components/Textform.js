@@ -86,7 +86,9 @@ export default function Textform(props) {
         <p>
           <i>
             Time Required to read all the words is{' '}
-            {text.split(' ').length * 0.08}
+            {text.split(' ').filter((element) => {
+              return element.length !== 0;
+            }).length * 0.08}
           </i>
         </p>
         <h2>Preview</h2>
